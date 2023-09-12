@@ -112,7 +112,18 @@ class Parser:
                 self.tmpdir.name,
                 f"{self.client_name}.pdf",
             )
-            subprocess.run(["unoconv", "-f", "pdf", "-o", filename, self.filename])
+
+            subprocess.run(
+                [
+                    "soffice",
+                    "--headless",
+                    "--convert-to",
+                    "pdf",
+                    self.filename,
+                    "--outdir",
+                    self.tmpdir.name,
+                ]
+            )
             self.filename = filename
 
     def __enter__(self):
