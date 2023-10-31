@@ -519,6 +519,24 @@ socks = ["httpx[socks]"]
 webhooks = ["tornado (>=6.2,<7.0)"]
 
 [[package]]
+name = "python-telegram-bot-calendar"
+version = "1.0.5"
+description = "Python inline calendar for telegram bots"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "python-telegram-bot-calendar-1.0.5.tar.gz", hash = "sha256:b1536021edc6d9ed8976ecb2f20869d9558ce946e10e01c8c8b66444757d70f7"},
+    {file = "python_telegram_bot_calendar-1.0.5-py3-none-any.whl", hash = "sha256:2d4ce5aefcb54629b9f3189d9f0ca2a0ff3cdf763d6a986f581ffbc2b967bd4d"},
+]
+
+[package.dependencies]
+python-dateutil = "*"
+
+[package.extras]
+telethon = ["telethon"]
+
+[[package]]
 name = "pytz"
 version = "2023.3.post1"
 description = "World timezone definitions, modern and historical"
@@ -581,4 +599,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "51e7296f39b3eb8589957d639556304d0fa86fac747eb1cab4b2ce4935eaa98b"
+content-hash = "453dc814c34b1a53d6ec687d5f899f99df14dfff5eb22dd4b0671e1f61413e82"

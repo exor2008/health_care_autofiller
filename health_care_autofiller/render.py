@@ -10,8 +10,8 @@ import pandas as pd
 from openpyxl.drawing.image import Image
 
 
-def get_current_week():
-    today = datetime.now()
+def get_current_week(today: datetime | None = None):
+    today = today if today else datetime.now()
 
     match today.weekday():
         case 6:
@@ -28,7 +28,10 @@ def get_clients() -> List[str]:
 
 
 class Parser:
-    def __init__(self, template: pathlib.Path, client_name: str) -> None:
+    def __init__(
+        self, template: pathlib.Path, client_name: str, today=datetime | None
+    ) -> None:
+        self.today = today
         self.workbook = openpyxl.load_workbook(template)
         self.client_name = client_name
         self.tmpdir = None
@@ -37,7 +40,7 @@ class Parser:
     def fill(self):
         days = "EFGHIJK"
         sheet = self.workbook["Sheet1"]
-        week = get_current_week()
+        week = get_current_week(self.today)
         for l, d in zip(days, week):
             sheet[f"{l}{6}"].value = d.day
 
