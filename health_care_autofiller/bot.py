@@ -59,7 +59,7 @@ async def generate_record(
         p.fill()
         p.save()
         await context.bot.send_document(
-            update.callback_query.message.chat_id, p.filename
+            update.callback_query.message.chat_id, p.filename, write_timeout=60, connect_timeout=60
         )
 
 
@@ -106,7 +106,7 @@ async def unknown(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
 
 
 def start_app():
-    application = ApplicationBuilder().token(os.getenv("TOKEN")).build()
+    application = ApplicationBuilder().token(os.getenv("TOKEN")).get_updates_write_timeout(20).build()
 
     record_handler = ConversationHandler(
         entry_points=[CommandHandler("record", ask_client)],
