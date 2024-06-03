@@ -87,10 +87,11 @@ class Parser:
                     cell.value = "✔"
 
         # Fill total hours
-        sheet["C8"] = arr[0, 7]
-        sheet["C10"] = arr[1, 7]
-        sheet["C12"] = arr[2, 7]
-        sheet["C14"] = arr[3, 7]
+        if arr.shape[1] == 8:
+            sheet["C8"] = arr[0, 7]
+            sheet["C10"] = arr[1, 7]
+            sheet["C12"] = arr[2, 7]
+            sheet["C14"] = arr[3, 7]
 
         # Fill patient name
         sheet["G3"] = self.client_name.replace(" ", ", ")
